@@ -2,8 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TodosModule } from './todos/todos.module';
+import { AuthModule } from './auth/auth.module';
+import { TasksModule } from './tasks/tasks.module';
 import * as path from 'path';
+import * as process from 'process';
 
 @Module({
   imports: [
@@ -18,7 +20,8 @@ import * as path from 'path';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    TodosModule,
+    AuthModule,
+    TasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],

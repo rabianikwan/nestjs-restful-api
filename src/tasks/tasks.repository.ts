@@ -28,7 +28,8 @@ export class TaskRepository {
     const task = this.taskEntityRepository.create({
       title,
       description,
-      status: TaskStatus.OPEN,
+      status: TaskStatus.IN_PROGRESS,
+      duration: 0,
       user,
     });
     await this.taskEntityRepository.save(task);
@@ -70,6 +71,9 @@ export class TaskRepository {
     const task = await this.findById(id, user);
 
     task.status = status;
+    if (task.status === 'DONE') {
+      task.duration = new Date().getTime() - task.created_at.getTime();
+    }
     await this.taskEntityRepository.save(task);
 
     return task;

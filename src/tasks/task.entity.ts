@@ -1,4 +1,10 @@
-import {BeforeUpdate, Column, Entity, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
+import {
+  BeforeUpdate,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { TaskStatus } from './task-status.enum';
 import { User } from '../auth/user.entity';
 import { Exclude } from 'class-transformer';
